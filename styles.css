@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'Noto Serif SC';
+    src: url('./fonts/NotoSerifSC-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Lxgw WenSong';
+    src: url('./fonts/LxgwWenSong.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
     margin: 0;
     padding: 20px;
@@ -10,7 +26,7 @@ body {
 
 #app {
     font-size: 28px;
-    font-family: 'Noto Serif SC', serif;
+    font-family: 'Noto Serif SC', 'Lxgw WenSong', serif;
     color: #333;
     font-weight: 600;
 } 
