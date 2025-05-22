@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -16,15 +18,27 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+          cache: 'npm'
+
+      - name: Debug Node and NPM versions
+        run: |
+          node -v
+          npm -v
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          npm install --verbose
+          ls -la node_modules
 
       - name: Build
         run: npm run build
+
+      - name: List dist directory
+        run: ls -la dist
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
-          branch: gh-pages 
+          branch: gh-pages
+          clean: true 
